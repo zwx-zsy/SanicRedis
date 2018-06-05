@@ -44,4 +44,4 @@ if __name__ == '__main__':
 Resources
 ---------
 
-- [PyPI](https://pypi.python.org/pypi/sanic-redis)
+- [PyPI](https://pypi.org/project/SanicRedis)
