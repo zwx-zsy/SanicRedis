@@ -4,9 +4,8 @@
 
 from __future__ import with_statement
 from setuptools import find_packages
-import ssl
-ssl._create_default_https_context=ssl._create_unverified_context
 import sys
+import SanicRedis.BaseRedis as BaseRedis
 if sys.version_info < (2, 5):
     sys.exit('Python 2.5 or greater is required.')
 
@@ -14,19 +13,24 @@ try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
-import SanicRedis.BaseRedis as BaseRedis
+
+try:
+    with open('README.md') as f:
+        long_description = f.read()
+except Exception as e:
+    long_description = None
 
 
 setup(name='SanicRedis',
       version=BaseRedis.__version__,
-      description='Simple xml parse and build lib.',
-      long_description="SanicRedis is a sanic framework extension which adds support for the redis.",
+      description='SanicRedis',
+      long_description=long_description,
       author='zhou biao',
       author_email='vincent321x@gmail.com',
       maintainer='zhou biao',
       maintainer_email='vincent321x@gmail.com',
-      url='https://github.com/yancyzhou/sanic_redis',
-      install_requires=['redis'],
+      url='https://github.com/yancyzhou/SanicRedis',
+      install_requires=['redis', 'aioredis'],
       packages=find_packages(),
       platforms=['all'],
       classifiers=[

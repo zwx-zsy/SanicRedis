@@ -29,7 +29,7 @@ except ImportError:
     from sanic.log import log as logger
 
 
-__version__ = '0.0.2'
+__version__ = '0.0.6'
 
 
 class BaseRedis:
