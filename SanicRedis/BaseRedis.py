@@ -121,6 +121,7 @@ class BaseRedis:
         Set an expire flag on key ``name`` for ``time`` seconds. ``time``
         can be represented by an integer or a Python timedelta object.
         """
+        name = cls.__coll__ + name
         if isinstance(time, datetime.timedelta):
             time = time.seconds + time.days * 24 * 3600
         return await cls.Execute('EXPIRE', name, time)
@@ -131,6 +132,7 @@ class BaseRedis:
         Set an expire flag on key ``name``. ``when`` can be represented
         as an integer indicating unix time or a Python datetime object.
         """
+        name = cls.__coll__ + name
         if isinstance(when, datetime.datetime):
             when = int(mod_time.mktime(when.timetuple()))
         return await cls.Execute('EXPIREAT', name, when)
@@ -342,7 +344,6 @@ class BaseRedis:
         Return the value at key ``name``, or None if the key doesn't exist
         """
         name = cls.__coll__ + name
-        print(name)
         return await cls.Execute('GET', name)
 
     def __getitem__(self, name):
