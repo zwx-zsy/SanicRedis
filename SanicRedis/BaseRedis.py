@@ -29,7 +29,7 @@ except ImportError:
     from sanic.log import log as logger
 
 
-__version__ = '0.0.6'
+__version__ = '0.0.8'
 
 
 class BaseRedis:
@@ -89,7 +89,6 @@ class BaseRedis:
     async def default_close_connection(app, loop):
         if hasattr(app, 'motor_clients'):
             for name, client in app.motor_redis_clients.items():
-                print(client)
                 logger.info('closing motor redis connection for [{}]'.format(name))
                 client.close()
                 await client.wait_closed()
