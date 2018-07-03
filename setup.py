@@ -5,7 +5,6 @@
 from __future__ import with_statement
 from setuptools import find_packages
 import sys
-import aioredis
 import SanicRedis.BaseRedis as BaseRedis
 if sys.version_info < (2, 5):
     sys.exit('Python 2.5 or greater is required.')
@@ -31,7 +30,6 @@ setup(name='SanicRedis',
       maintainer='zhou biao',
       maintainer_email='vincent321x@gmail.com',
       url='https://github.com/yancyzhou/SanicRedis',
-      install_requires=['aioredis'],
       packages=find_packages(),
       platforms=['all'],
       classifiers=[
@@ -44,4 +42,6 @@ setup(name='SanicRedis',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Topic :: Software Development :: Libraries'
-      ])
+      ],
+      install_requires=['aioredis>=1.1.0']
+)
