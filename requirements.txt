@@ -1,2 +1,1 @@
-setuptools == 18.5
-aioredis == 1.1.0
+aioredis >= 1.1.0
