@@ -29,7 +29,7 @@ except ImportError:
     from sanic.log import log as logger
 
 
-__version__ = '0.1.0'
+__version__ = '0.1.2'
 
 
 class BaseRedis:
@@ -101,6 +101,10 @@ class BaseRedis:
 
     def __delitem__(self, key):
         self.delete(key)
+
+    @classmethod
+    async def CustomPipeline(cls):
+        return cls.__motor_redis_client__.pipeline()
 
     @classmethod
     async def delete(cls,*keys):
